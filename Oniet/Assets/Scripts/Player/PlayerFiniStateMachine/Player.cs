@@ -29,9 +29,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Vector2 work_space;
     #endregion
-
     //Unity methods
-
     #region 
     private void Awake()
     {
@@ -61,10 +59,19 @@ public class Player : MonoBehaviour
 
     }
     #endregion 
+    // my methods
+    #region 
+    //Move Methods
+    #region 
     public void SetVelocity(Vector2 velocity)
     {
         work_space = velocity;
 
         RB.velocity = work_space;
     }
+    #endregion
+    #endregion
+
+    // solo chequeo que el git flow funcione
+
 }
