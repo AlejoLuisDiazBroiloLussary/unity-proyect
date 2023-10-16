@@ -72,10 +72,4 @@ public class Player : MonoBehaviour
     #endregion
     #endregion
 
-    // solo chequeo que el git flow funcione
-    // ahora voy a pusheara  feature
-    // ahora voy a meter 1 comentario mas
-
-
-
 }
