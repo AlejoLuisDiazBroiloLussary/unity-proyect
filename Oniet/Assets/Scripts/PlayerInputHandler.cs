@@ -9,7 +9,4 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnMoveInput(InputAction.CallbackContext context){
         MovementInput = context.ReadValue<Vector2>().normalized;
     }
-
-    public void OnDashInput(InputAction.CallbackContext context){
-    }
 }

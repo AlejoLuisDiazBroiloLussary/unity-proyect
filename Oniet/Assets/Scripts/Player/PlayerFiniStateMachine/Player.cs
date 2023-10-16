@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class Player : MonoBehaviour
     public PlayerStateMachine StateMachine { get; private set; }
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
+    public PlayerDashState DashState { get; private set; }
     
     #endregion
     // unity objects
@@ -21,6 +23,7 @@ public class Player : MonoBehaviour
     // my objects
     #region
     public PlayerInputHandler inputHandler { get; private set; }
+    [SerializeField]
     private PlayerData playerData;
 
     #endregion
@@ -37,6 +40,7 @@ public class Player : MonoBehaviour
 
         IdleState = new PlayerIdleState(this, StateMachine, playerData, "Idle");
         MoveState= new PlayerMoveState(this, StateMachine, playerData, "Move");
+        DashState= new PlayerDashState(this, StateMachine, playerData, "Dash");
     }
 
     private void Start()
@@ -68,6 +72,12 @@ public class Player : MonoBehaviour
         work_space = velocity;
 
         RB.velocity = work_space;
+    }
+    #endregion
+    // Dash Methods
+    #region 
+    public void OnDash(){
+        StateMachine.ChangeState(DashState);
     }
     #endregion
     #endregion

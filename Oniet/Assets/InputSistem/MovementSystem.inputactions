@@ -84,7 +84,7 @@
                     "name": "",
                     "id": "68072c67-2ab5-4ba0-85c1-c374f345b75a",
                     "path": "<Keyboard>/space",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "dash",

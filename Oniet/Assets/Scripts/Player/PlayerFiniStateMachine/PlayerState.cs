@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerState
@@ -24,6 +26,7 @@ public class PlayerState
         DoCheck();
         startTime = Time.time;
         player.Anim.SetBool(animBoolName, true);
+
     }
     public virtual void Exit()
     {
