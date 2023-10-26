@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //States
-    #region
+    #region States
 
     public PlayerStateMachine StateMachine { get; private set; }
     public PlayerIdleState IdleState { get; private set; }
@@ -14,33 +13,29 @@ public class Player : MonoBehaviour
     public PlayerDashState DashState { get; private set; }
     
     #endregion
-    // unity objects
-    #region 
+    #region Unity Objects
     public Animator Anim { get; private set; }
     public Rigidbody2D RB { get; private set; }
 
     #endregion
-    // my objects
-    #region
+    #region My Objects
     public PlayerInputHandler inputHandler { get; private set; }
     [SerializeField]
     private PlayerData playerData;
 
     #endregion
-    // variables
-    #region 
+    #region Variables
     [SerializeField]
     private Vector2 work_space;
     #endregion
-    //Unity methods
-    #region 
+    #region Unity Methods
     private void Awake()
     {
         StateMachine = new PlayerStateMachine();
 
         IdleState = new PlayerIdleState(this, StateMachine, playerData, "Idle");
-        MoveState= new PlayerMoveState(this, StateMachine, playerData, "Move");
-        DashState= new PlayerDashState(this, StateMachine, playerData, "Dash");
+        MoveState = new PlayerMoveState(this, StateMachine, playerData, "Move");
+        DashState = new PlayerDashState(this, StateMachine, playerData, "Dash");
     }
 
     private void Start()
@@ -63,23 +58,25 @@ public class Player : MonoBehaviour
 
     }
     #endregion 
-    // my methods
-    #region 
-    //Move Methods
-    #region 
-    public void SetVelocity(Vector2 velocity)
-    {
-        work_space = velocity;
+    #region my methods
+        public void SetVelocity(Vector2 velocity)
+            {
+                work_space = velocity;
 
-        RB.velocity = work_space;
-    }
+                RB.velocity = work_space;
+            }
+        #region Other Functions
+        public void AnimationTrigger(){
+            StateMachine.CurrentState.AnimationTrigger();
+        }
+        public void AnimationFinishedTrigger(){
+            StateMachine.CurrentState.AnimationFinishTrigger();
+        }
+        #endregion 
+        #region Move Methods
+        
+        #endregion
+        #region Dash Methods
+        #endregion
     #endregion
-    // Dash Methods
-    #region 
-    public void OnDash(){
-        StateMachine.ChangeState(DashState);
-    }
-    #endregion
-    #endregion
-
 }

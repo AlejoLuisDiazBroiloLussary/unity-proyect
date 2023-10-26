@@ -13,3 +13,8 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   movement_velocity: 10
+  dash_cooldown: 0.2
+  dash_velocity: 20
+  dash_time: 0.2
+  drag: 10
+  dashEndMultiplier: 0.2

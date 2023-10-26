@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDashingState : PlayerState
+public class PlayerAbilityState : PlayerState
 {
-    protected Vector2 input;
-    public PlayerDashingState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
+    public PlayerAbilityState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
-
+    protected bool isAbilityDone;
     public override void DoCheck()
     {
         base.DoCheck();
@@ -17,6 +16,7 @@ public class PlayerDashingState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        isAbilityDone = false;
     }
 
     public override void Exit()
@@ -27,6 +27,9 @@ public class PlayerDashingState : PlayerState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+        if(isAbilityDone){
+            stateMachine.ChangeState(player.IdleState);
+        }
     }
 
     public override void PhysicsUpdate()
